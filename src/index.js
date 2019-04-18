@@ -3,10 +3,14 @@ import * as serviceWorker from './serviceWorker';
 import d3 from "d3";
 import $ from 'jquery';
 import convert from 'xml-js'
+import MinimosCuadrados from './MinimosCuadrados';
 window.d3 = d3;
 const functionPlot = require("function-plot");
 const root = document.querySelector("#root");
 const input = document.querySelector("#file");
+let x = [];
+let y = [];
+let pfinal;
 let options = {
     target: root,
     title: 'Proyecto Admin',
@@ -18,10 +22,10 @@ let options = {
     },
     xAxis: {
         label: 'x - axis',
-        domain: [-15, 15]
+        domain: [-6, 6]
     },
     tip: {
-        xLine: true, // dashed line parallel to y = 0
+        xLine: true,
         yLine: true,
         renderer: function () {}
     },
@@ -30,13 +34,21 @@ let options = {
 }
 functionPlot(options);
 
-$('#update').click(function () {
-    var favorite = [];
-    $.each($("input[name='sport']:checked"), function(){            
-        favorite.push($(this).val());
-    });
-    alert("My favourite sports are: " + favorite.join(", "));
-    functionPlot(options);
+$('#update').click(() => {
+    // var favorite = [];
+    // $.each($("input[name='sport']:checked"), function () {
+    //     favorite.push($(this).val());
+    // });
+    // let n13 = $('#13').val();
+    // let n20 = $('#20').val();
+    // let n23 = $('#23').val();
+    // let n24 = $('#24').val();
+    // favorite.push([n13, n20, n23, n24]);
+    let n = parseInt($('#2').val(), 10);
+    let mc = new MinimosCuadrados(x, y);
+    let resuelto = mc.resolver(n);
+    dibujarFuncion(resuelto);
+
 });
 
 input.addEventListener('change', (e) => {
@@ -57,7 +69,7 @@ input.addEventListener('change', (e) => {
                 if (linea) {
                     return [Number(linea.split(",")[0]), Number(linea.split(",")[1])];
                 }
-            }).filter((value)=>{
+            }).filter((value) => {
                 return value;
             });
         } else if (tipoArchivo === "txt") {
@@ -65,7 +77,7 @@ input.addEventListener('change', (e) => {
                 if (linea) {
                     return [Number(linea.split(" ")[0]), Number(linea.split(" ")[1])];
                 }
-            }).filter((value)=>{
+            }).filter((value) => {
                 return value;
             });
         } else if (tipoArchivo === "xml") {
@@ -89,13 +101,15 @@ input.addEventListener('change', (e) => {
         } else {
             console.log("basta");
         }
-        console.log({
-            points
+        x = points.map((arr) => {
+            return arr[0];
         });
-
-        dibujarPuntos(points);
+        y = points.map((arr) => {
+            return arr[1];
+        });
+        pfinal = points;
     }
-    reader.readAsText(input.files[0])
+    reader.readAsText(input.files[0]);
 
 }, false);
 
@@ -105,7 +119,48 @@ function dibujarPuntos(arr) {
         points: arr,
         graphType: 'scatter',
         color: "red",
+        updateOnMouse: true,
     }
     functionPlot(options);
+}
+
+function dibujarFuncion(arr) {
+    let funcion = "";
+    let coef;
+    for (let i = 0; i < arr.length; i++) {
+        coef = arr[i];
+        funcion += `${coef}x^${i}+`;
+    }
+    funcion = funcion.substring(0, funcion.length - 1);
+    console.log(`************** ${funcion} **************`);
+    functionPlot({
+        target: root,
+        title: 'Proyecto Admin',
+        width: 1000,
+        height: 680,
+        yAxis: {
+            label: 'y - axis',
+            domain: [-6, 6]
+        },
+        xAxis: {
+            label: 'x - axis',
+            domain: [-6, 6]
+        },
+        tip: {
+            xLine: true,
+            yLine: true,
+            renderer: function () {}
+        },
+        grid: true,
+        data: [{
+            fn: funcion
+        }, {
+            points: pfinal,
+            fnType: 'points',
+            graphType: 'scatter'
+        }]
+    });
+
+
 }
 serviceWorker.unregister();

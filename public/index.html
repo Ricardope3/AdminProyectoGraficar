@@ -5,21 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#000000">
-  <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
   <title>React App</title>
 </head>
 
@@ -34,95 +22,169 @@
       <div class="container">
         <div class="wrapper2">
           <div>
-            <h1>Lineal</h1>
-            <input type="checkbox" id="one" name="sport" value="1">
+            <h1>Polinómica</h1>
+            <!-- <input type="checkbox" id="one" name="sport" value="1">
             <label for="one">
               <span></span>
-              Ax+b
-            </label>
-            <div> <input type="checkbox" id="one" name="sport" value="2">
+              \(ax+b\)
+            </label> -->
+            <div> 
+              <input type="text" id="2" placeholder="n">
               <label for="one">
                 <span></span>
-                Ax
+                \(a+bx+cx^2...kx^n\)
               </label>
             </div>
           </div>
-          <div>
+          <!-- <div> --
             <h1>Cuadrática</h1>
             <input type="checkbox" id="one" name="sport" value="3">
             <label for="one">
               <span></span>
-              Ax2+bx+b
+              \(ax^2+bx+b\)
             </label>
             <div>
               <input type="checkbox" id="one" name="sport" value="4">
               <label for="one">
                 <span></span>
-                Ax2+bx
+                \(ax^2+bx\)
               </label>
             </div>
             <div>
               <input type="checkbox" id="one" name="sport" value="5">
               <label for="one">
                 <span></span>
-                Ax2+b
+                \(ax^2+b\)
               </label>
             </div>
             <div>
               <input type="checkbox" id="one" name="sport" value="6">
               <label for="one">
                 <span></span>
-                Ax2
+                \(ax^2\)
               </label>
             </div>
           </div>
           <div>
             <h1>Cúbica</h1>
-            <input type="checkbox" id="one" name="sport" value="7">
-            <label for="one">
-              <span></span>
-              Ax2+bx+b
-            </label>
-          </div>
-          <div>
-            <h1>Polinómica</h1>
-            <input type="checkbox" id="one" name="sport" value="8">
-            <label for="one">
-              <span></span>
-              Ax2+bx+b
-            </label>
-          </div>
-          <div>
-            <h1>Trascendental</h1>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="7">
+              <label for="one">
+                <span></span>
+                \(ax^3+bx^2+cx + d\)
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="8">
+              <label for="one">
+                <span></span>
+                \(ax^3+bx^2+cx\)
+              </label>
+            </div>
             <input type="checkbox" id="one" name="sport" value="9">
             <label for="one">
               <span></span>
-              Ax2+bx+b
+              \(ax^3+bx^2+c\)
             </label>
-          </div>
-          <div>
-              <h1>Logarítmica</h1>
+            <div>
               <input type="checkbox" id="one" name="sport" value="10">
               <label for="one">
                 <span></span>
-                Ax2+bx+b
+                \(ax^3+bx^2\)
               </label>
             </div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="11">
+              <label for="one">
+                <span></span>
+                \(ax^3+b\)
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="12">
+              <label for="one">
+                <span></span>
+                \(ax^3\)
+              </label>
+            </div>
+          </div>
+          <div>
+            <h1>Polinómica</h1>
+            <div><input type="text" placeholder="n" id="13"></div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="14">
+              <label for="one">
+                <span></span>
+                \(ax^n+bx^{n-1}+cx^{n-2} + d\)
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="15">
+              <label for="one">
+                <span></span>
+                \(ax^n+bx^{n-1}+cx^{n-2}\)
+              </label>
+            </div>
+            <input type="checkbox" id="one" name="sport" value="16">
+            <label for="one">
+              <span></span>
+              \(ax^n+bx^{n-1}+c\)
+            </label>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="17">
+              <label for="one">
+                <span></span>
+                \(ax^{n}+bx^{n-1}\)
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="18">
+              <label for="one">
+                <span></span>
+                \(ax^n+b\)
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="19">
+              <label for="one">
+                <span></span>
+                \(ax^{n}\)
+              </label>
+            </div>
+          </div>
+          <div>
+            <h1>Trascendental</h1>
+            <div><input type="text" placeholder="n" id="20"></div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="21">
+              <label for="one">
+                <span></span>
+                \(x^n\)
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" id="one" name="sport" value="22">
+              <label for="one">
+                <span></span>
+                \(e^{kn}\)
+              </label>
+            </div> -->
+          <!-- </div>
+            <h1>Logarítmica</h1>
+            <div>
+              <div><input type="text" name="" id="23" placeholder="b"></div>
+              <div><input type="text" name="" id="24" placeholder="x"></div>
+              <input type="checkbox" id="one" name="sport" value="25">
+              <label for="one">
+                <span></span>
+                $$log_bx$$
+              </label>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
   </div>
-
-  <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
 </body>
 
 </html>
